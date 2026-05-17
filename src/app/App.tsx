@@ -43,7 +43,18 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <h2 className="text-xl font-bold" style={{ color: '#00D1FF' }}>NB</h2>
+              <a
+                href="#hero"
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToSection('hero');
+                }}
+                className="text-xl font-bold transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#00D1FF] focus:ring-offset-2 focus:ring-offset-[#0B0F19] rounded-sm"
+                style={{ color: '#00D1FF' }}
+                aria-label="Go to hero section"
+              >
+                NB
+              </a>
             </div>
             
             {/* Desktop Navigation */}

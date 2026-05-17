@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -123,7 +123,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                   // Create a link element and trigger download
                   const link = document.createElement('a');
                   link.href = '/cv.pdf';
-                  link.download = 'Nabil_Ben_Haribou_CV.pdf';
+                  link.download = 'cv.pdf';
                   document.body.appendChild(link);
                   link.click();
                   document.body.removeChild(link);
