@@ -107,7 +107,7 @@ export default function App() {
         <ProjectsSection />
         <ToolsSection />
         <ContactSection />
-        <Footer />
+        <Footer onNavigate={scrollToSection} />
       </main>
     </div>
   );
