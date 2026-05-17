@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { MobileMenu } from './components/MobileMenu';
 import { Menu, X } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -109,6 +110,7 @@ export default function App() {
         <ContactSection />
         <Footer onNavigate={scrollToSection} />
       </main>
+      <Analytics />
     </div>
   );
 }
