@@ -22,19 +22,26 @@ export function MobileMenu({ isOpen, onNavigate }: MobileMenuProps) {
           }}
         >
           <div className="px-4 py-6 space-y-3">
-            {menuItems.map((item, index) => (
-              <motion.button
+            {menuItems.map((item, index) => {
+              const sectionId = item.toLowerCase();
+
+              return (
+              <motion.a
                 key={item}
+                href={`#${sectionId}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                onClick={() => onNavigate(item.toLowerCase())}
+                onClick={() => {
+                  onNavigate(sectionId);
+                }}
                 className="block w-full text-left px-4 py-3 rounded-lg transition-all hover:bg-white/5"
                 style={{ color: '#fff' }}
               >
                 {item}
-              </motion.button>
-            ))}
+              </motion.a>
+              );
+            })}
           </div>
         </motion.div>
       )}

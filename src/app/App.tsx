@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
@@ -16,10 +16,22 @@ export default function App() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
       setMobileMenuOpen(false);
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `#${sectionId}`);
     }
   };
+
+  useEffect(() => {
+    if (!window.location.hash) {
+      return;
+    }
+
+    const sectionId = window.location.hash.replace('#', '');
+    window.requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView();
+    });
+  }, []);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0B0F19' }}>
@@ -37,16 +49,24 @@ export default function App() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                {['About', 'Skills', 'Education', 'Projects', 'Tools', 'Contact'].map((item) => (
-                  <button
+                {['About', 'Skills', 'Education', 'Projects', 'Tools', 'Contact'].map((item) => {
+                  const sectionId = item.toLowerCase();
+
+                  return (
+                  <a
                     key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
+                    href={`#${sectionId}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      scrollToSection(sectionId);
+                    }}
                     className="px-3 py-2 rounded-md transition-colors hover:bg-white/5"
                     style={{ color: '#fff' }}
                   >
                     {item}
-                  </button>
-                ))}
+                  </a>
+                  );
+                })}
               </div>
             </div>
 
