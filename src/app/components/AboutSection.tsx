@@ -83,7 +83,7 @@ export function AboutSection() {
               </p>
 
               {/* Tech Icons */}
-              <div className="grid grid-cols-3 gap-4 mt-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
                 {techIcons.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
