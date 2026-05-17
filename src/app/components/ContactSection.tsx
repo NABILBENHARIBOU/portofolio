@@ -167,11 +167,14 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={6}
-                    className="w-full rounded-lg transition-all focus:shadow-lg resize-none"
+                    wrap="soft"
+                    className="w-full rounded-lg transition-all focus:shadow-lg resize-none whitespace-pre-wrap break-words"
                     style={{
                       background: 'rgba(255, 255, 255, 0.05)',
                       border: '1px solid rgba(0, 209, 255, 0.2)',
-                      color: '#fff'
+                      color: '#fff',
+                      overflowWrap: 'break-word',
+                      wordBreak: 'break-word'
                     }}
                     placeholder="Your message..."
                   />
