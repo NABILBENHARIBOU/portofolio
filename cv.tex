@@ -1,70 +1,280 @@
-\documentclass[10pt]{article}
-\usepackage[margin=0.7in]{geometry}
+\documentclass[10pt, a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[top=0.55in, bottom=0.55in, left=0in, right=0in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{type1cm}
+\usepackage[activate={true,nocompatibility},final,expansion=false,kerning=true]{microtype}
+\usepackage{xcolor}
+\usepackage{tikz}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{multirow}
+\usepackage{parskip}
+
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{4pt}
-\setlist[itemize]{leftmargin=14pt, itemsep=2pt, topsep=2pt}
+\setlength{\parskip}{0pt}
 
-\newcommand{\sectiontitle}[1]{
-  \vspace{8pt}
-  {\large\bfseries #1}
-  \vspace{2pt}
-  \hrule
-  \vspace{5pt}
+% ── Couleurs ──────────────────────────────────────────────────────────────────
+\definecolor{darkbg}{HTML}{1A1A2E}
+\definecolor{accent}{HTML}{0F6E56}
+\definecolor{accentlight}{HTML}{1D9E75}
+\definecolor{sidetext}{HTML}{E0E0E0}
+\definecolor{sidemuted}{HTML}{9ABFB3}
+\definecolor{mainbg}{HTML}{FFFFFF}
+\definecolor{maintext}{HTML}{1A1A1A}
+\definecolor{muted}{HTML}{5A5A5A}
+\definecolor{rulecol}{HTML}{DDDDDD}
+\definecolor{tagbg}{HTML}{E1F5EE}
+\definecolor{tagtxt}{HTML}{0F6E56}
+
+% ── Commandes utilitaires ─────────────────────────────────────────────────────
+\newcommand{\sideheading}[1]{%
+  {\fontsize{7}{9}\selectfont\color{accentlight}\MakeUppercase{#1}}%
+  \vspace{3pt}\newline
+  {\color{accentlight!40}\hrule height 0.4pt}%
+  \vspace{6pt}
 }
 
+\newcommand{\mainheading}[1]{%
+  \vspace{8pt}
+  {\fontsize{7.5}{9}\selectfont\color{accent}\MakeUppercase{#1}}%
+  \vspace{2pt}\newline
+  {\color{rulecol}\hrule height 0.6pt}%
+  \vspace{7pt}
+}
+
+\newcommand{\skilltag}[1]{%
+  \tikz[baseline=-0.6ex]\node[fill=white!10, draw=white!20, text=sidetext,
+    rounded corners=2pt, inner xsep=5pt, inner ysep=2pt,
+    font=\fontsize{7}{8}\selectfont]{#1};%
+}
+
+\newcommand{\projecttitle}[1]{%
+  {\fontsize{9}{11}\selectfont\bfseries\color{maintext} #1}%
+}
+
+\newcommand{\projdesc}[1]{%
+  {\fontsize{8.5}{11}\selectfont\color{muted} #1}%
+}
+
+\newcommand{\edutitle}[1]{%
+  {\fontsize{9}{11}\selectfont\bfseries\color{maintext} #1}%
+}
+
+\newcommand{\edusub}[1]{%
+  {\fontsize{8}{10}\selectfont\color{muted} #1}%
+}
+
+\newcommand{\period}[1]{%
+  \hfill{\fontsize{7.5}{9}\selectfont\color{accent}\textit{#1}}%
+}
+
+\usepackage{microtype}
+
+% ── Document ──────────────────────────────────────────────────────────────────
 \begin{document}
 
-{\Huge\bfseries Nabil Ben Haribou}\\
-\vspace{4pt}
-{\large Cybersecurity Student \& Full-Stack Developer}\\
-\vspace{6pt}
-\href{mailto:nabilharibou@gmail.com}{nabilharibou@gmail.com}
+% ═══════════════════════════════════════════════════════
+%  MISE EN PAGE : colonne gauche (sidebar) + droite (main)
+% ═══════════════════════════════════════════════════════
+\noindent
+\begin{minipage}[t]{0.30\textwidth}
+\raggedright
 
-\sectiontitle{Profile}
-Cybersecurity student and full-stack developer interested in ethical hacking, secure web development, and practical penetration testing. I build web applications with modern frontend and backend technologies while developing strong foundations in networking, Linux, and application security.
+% ── Fond de la sidebar avec TikZ ──────────────────────
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[darkbg] (current page.north west)
+    rectangle ++({0.30\paperwidth}, {-\paperheight});
+\end{tikzpicture}
 
-\sectiontitle{Technical Skills}
-\textbf{Cybersecurity:} Ethical hacking, penetration testing fundamentals, network security, web application security\\
-\textbf{Tools:} Kali Linux, Nmap, Wireshark, Burp Suite, Metasploit\\
-\textbf{Backend:} Django, Django REST Framework, Spring Boot, REST APIs\\
-\textbf{Frontend:} React, Vite, TypeScript, JavaScript, modern UI development\\
-\textbf{Databases \& DevOps:} SQL databases, Docker, Git, GitHub, Linux
+\vspace*{0pt}
+\hspace*{12pt}
+\begin{minipage}[t]{0.82\linewidth}
+\vspace{14pt}
 
-\sectiontitle{Projects}
-\textbf{Secure Appointment Management System}\\
-Secure web application built with Django REST and React for managing appointments with authentication and role-based access.
+% Avatar / Initiales
+\begin{center}
+\begin{tikzpicture}
+  \fill[accent] (0,0) circle (22pt);
+  \node at (0,0) {\color{white}\fontsize{18}{20}\selectfont\bfseries NB};
+\end{tikzpicture}
 
-\textbf{E-Commerce Web Application}\\
-Full-stack e-commerce platform with product catalog, shopping cart, and API integration built with Spring Boot, React, Vite, and TypeScript.
+\vspace{8pt}
+{\fontsize{15}{18}\selectfont\bfseries\color{white} Nabil Ben Haribou}
 
-\textbf{Local Web Penetration Testing Lab}\\
-Personal lab environment for practicing web application penetration testing using Kali Linux, Metasploit, Nmap, Wireshark, and Burp Suite.
+\vspace{3pt}
+{\fontsize{7.5}{9}\selectfont\color{accentlight}\MakeUppercase{Cybersecurity \& Full-Stack Dev}}
+\end{center}
 
-\textbf{Student Management Dashboard}\\
-Reusable admin dashboard with data tables and authentication built with modern frontend tools.
+\vspace{16pt}
 
-\sectiontitle{Education \& Learning}
-\textbf{Cybersecurity Studies} \hfill Current\\
-Focused on networking, ethical hacking, secure development, and cybersecurity fundamentals.
+% ── Contact ───────────────────────────────────────────
+\sideheading{Contact}
 
-\textbf{Full-Stack Development Practice} \hfill Projects\\
-Building practical applications with Django, Spring Boot, React, Vite, and TypeScript.
+{\fontsize{8}{11}\selectfont\color{sidetext}
+\ding{41}\hspace{5pt}\href{mailto:nabilharibou@gmail.com}{nabilharibou@gmail.com}\\[5pt]
+\ding{220}\hspace{5pt} github.com/nabilharibou\\[5pt]
+\ding{232}\hspace{5pt} Morocco
+}
 
-\textbf{Security Learning Path} \hfill In Progress\\
-Practicing offensive security workflows and strengthening hands-on skills with professional security tools.
+\vspace{14pt}
 
-\sectiontitle{Certifications \& Goals}
-\begin{itemize}
-  \item CompTIA Security+ -- In Progress
-  \item Certified Ethical Hacker (CEH) -- Planned
-  \item OSCP -- Long-term goal
+% ── Compétences ───────────────────────────────────────
+\sideheading{Cybersécurité}
+
+\skilltag{Ethical Hacking}\\[3pt]
+\skilltag{Pentest}
+\skilltag{Web Security}\\[3pt]
+\skilltag{Network Security}
+
+\vspace{10pt}
+\sideheading{Outils Sécurité}
+
+\skilltag{Kali Linux}
+\skilltag{Burp Suite}\\[3pt]
+\skilltag{Nmap}
+\skilltag{Wireshark}\\[3pt]
+\skilltag{Metasploit}
+
+\vspace{10pt}
+\sideheading{Backend}
+
+\skilltag{Django}
+\skilltag{DRF}\\[3pt]
+\skilltag{Spring Boot}
+\skilltag{REST API}
+
+\vspace{10pt}
+\sideheading{Frontend}
+
+\skilltag{React}
+\skilltag{TypeScript}\\[3pt]
+\skilltag{Vite}
+\skilltag{JavaScript}
+
+\vspace{10pt}
+\sideheading{DevOps \& DB}
+
+\skilltag{Docker}
+\skilltag{Git / GitHub}\\[3pt]
+\skilltag{Linux}
+\skilltag{SQL}
+
+\vspace{14pt}
+
+% ── Langues ───────────────────────────────────────────
+\sideheading{Langues}
+
+{\fontsize{8}{13}\selectfont\color{sidetext}
+\begin{tabular}{@{}l@{\hspace{8pt}}l}
+Arabe    & {\color{accentlight}\ding{108}\ding{108}\ding{108}\ding{108}\ding{108}} \\
+Français & {\color{accentlight}\ding{108}\ding{108}\ding{108}\ding{108}\ding{108}} \\
+Anglais  & {\color{accentlight}\ding{108}\ding{108}\ding{108}\ding{108}}{\color{sidemuted}\ding{108}} \\
+\end{tabular}
+}
+
+\end{minipage}
+\end{minipage}%
+% ───────────────────────────────────────────────────────
+\hspace*{6pt}%
+\begin{minipage}[t]{0.67\textwidth}
+\vspace{14pt}
+\hspace*{4pt}
+\begin{minipage}[t]{0.94\linewidth}
+
+% ── Profil ────────────────────────────────────────────
+\mainheading{Profil}
+
+{\fontsize{9}{14}\selectfont\color{muted}
+Étudiant en cybersécurité et développeur full-stack passionné par le hacking éthique, le développement web sécurisé et les tests de pénétration. Je construis des applications modernes avec des technologies frontend et backend tout en développant une solide base en réseau, Linux et sécurité applicative.
+}
+
+% ── Projets ───────────────────────────────────────────
+\mainheading{Projets}
+
+% Projet 1
+\begin{tikzpicture}
+  \fill[accent] (0, 0) rectangle (2pt, 34pt);
+\end{tikzpicture}\hspace{6pt}%
+\begin{minipage}[t]{0.93\linewidth}
+\projecttitle{Secure Appointment Management System}\\
+\projdesc{Application web sécurisée avec authentification et contrôle d'accès basé sur les rôles pour la gestion de rendez-vous.}\\[2pt]
+{\fontsize{7.5}{9}\selectfont\color{accent} Django REST \textbullet\ React \textbullet\ JWT Auth}
+\end{minipage}
+
+\vspace{8pt}
+
+% Projet 2
+\begin{tikzpicture}
+  \fill[accent] (0, 0) rectangle (2pt, 34pt);
+\end{tikzpicture}\hspace{6pt}%
+\begin{minipage}[t]{0.93\linewidth}
+\projecttitle{E-Commerce Web Application}\\
+\projdesc{Plateforme e-commerce complète avec catalogue produits, panier d'achat et intégration API.}\\[2pt]
+{\fontsize{7.5}{9}\selectfont\color{accent} Spring Boot \textbullet\ React \textbullet\ Vite \textbullet\ TypeScript}
+\end{minipage}
+
+\vspace{8pt}
+
+% Projet 3
+\begin{tikzpicture}
+  \fill[accent] (0, 0) rectangle (2pt, 34pt);
+\end{tikzpicture}\hspace{6pt}%
+\begin{minipage}[t]{0.93\linewidth}
+\projecttitle{Local Web Penetration Testing Lab}\\
+\projdesc{Environnement personnel pour pratiquer les tests de pénétration d'applications web.}\\[2pt]
+{\fontsize{7.5}{9}\selectfont\color{accent} Kali Linux \textbullet\ Metasploit \textbullet\ Nmap \textbullet\ Burp Suite}
+\end{minipage}
+
+\vspace{8pt}
+
+% Projet 4
+\begin{tikzpicture}
+  \fill[accent] (0, 0) rectangle (2pt, 26pt);
+\end{tikzpicture}\hspace{6pt}%
+\begin{minipage}[t]{0.93\linewidth}
+\projecttitle{Student Management Dashboard}\\
+\projdesc{Tableau de bord admin réutilisable avec tables de données et authentification.}\\[2pt]
+{\fontsize{7.5}{9}\selectfont\color{accent} React \textbullet\ Vite \textbullet\ TypeScript}
+\end{minipage}
+
+% ── Formation ─────────────────────────────────────────
+\mainheading{Formation \& Apprentissage}
+
+\edutitle{Études en Cybersécurité}\period{En cours}\\
+\edusub{Networking, ethical hacking, développement sécurisé et fondamentaux cybersécurité.}
+
+\vspace{7pt}
+
+\edutitle{Développement Full-Stack}\period{Projets}\\
+\edusub{Applications concrètes avec Django, Spring Boot, React, Vite et TypeScript.}
+
+\vspace{7pt}
+
+\edutitle{Parcours Sécurité Offensive}\period{En progrès}\\
+\edusub{Workflows offensifs et pratique hands-on avec les outils professionnels de sécurité.}
+
+% ── Certifications ────────────────────────────────────
+\mainheading{Certifications \& Objectifs}
+
+\setlist[itemize]{leftmargin=14pt, itemsep=4pt, topsep=2pt}
+\begin{itemize}[label={\color{accent}\ding{72}}]
+  \item {\fontsize{9}{11}\selectfont\color{maintext}\textbf{CompTIA Security+}}
+        {\fontsize{8}{10}\selectfont\color{muted} --- En cours}
+  \item {\fontsize{9}{11}\selectfont\color{maintext}\textbf{Certified Ethical Hacker (CEH)}}
+        {\fontsize{8}{10}\selectfont\color{muted} --- Planifié}
+  \item {\fontsize{9}{11}\selectfont\color{maintext}\textbf{OSCP --- Offensive Security}}
+        {\fontsize{8}{10}\selectfont\color{muted} --- Objectif long terme}
 \end{itemize}
 
-\sectiontitle{Languages}
-Arabic, French, English
+\end{minipage}
+\end{minipage}
 
 \end{document}
