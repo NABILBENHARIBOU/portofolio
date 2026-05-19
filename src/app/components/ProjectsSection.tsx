@@ -40,6 +40,139 @@ function AppointmentPreview() {
   );
 }
 
+function GsdDashboardPreview() {
+  const menuItems = [
+    'Tableau de bord',
+    'Administrateur',
+    'Enseignant',
+    'Eleve',
+    'Parent',
+    'Comptable',
+    'Scolarite',
+    'Pedagogie',
+    'Presences',
+    'Emploi du temps',
+    'Paiements',
+    'Administration'
+  ];
+
+  const stats = [
+    ['Eleves inscrits', '0'],
+    ['Enseignants', '0'],
+    ['Presence du jour', '0%'],
+    ['Paiements recus', '0 FCFA']
+  ];
+
+  return (
+    <div
+      className="relative z-10 h-full w-full overflow-hidden bg-[#f7f9fc] p-[clamp(8px,2.2vw,12px)]"
+      aria-label="GSD school management admin dashboard preview"
+    >
+      <div className="mx-auto flex h-full w-full max-w-[520px] overflow-hidden rounded-[16px] border border-[#dfe6f0] bg-[#f7f9fc] shadow-[0_18px_42px_rgba(15,23,42,0.16)]">
+        <aside className="hidden w-[104px] shrink-0 border-r border-[#e4eaf2] bg-white p-[8px] sm:block">
+          <div className="mb-[7px] flex h-[24px] items-center gap-[6px]">
+            <span className="grid h-[21px] w-[21px] place-items-center rounded-[8px] bg-[#2f6dfc] text-[7px] font-bold text-white">
+              GSD
+            </span>
+            <span className="truncate text-[7px] font-semibold text-[#172033]">School</span>
+          </div>
+          <nav className="space-y-[2px]">
+            {menuItems.map((item, index) => (
+              <div
+                key={item}
+                className={`h-[11px] truncate rounded-[6px] px-[5px] text-[5.1px] font-medium leading-[11px] ${
+                  index === 0
+                    ? 'bg-[#e8f1ff] text-[#2f6dfc]'
+                    : 'text-[#667085]'
+                }`}
+              >
+                {item}
+              </div>
+            ))}
+          </nav>
+        </aside>
+
+        <main className="min-w-0 flex-1">
+          <header className="flex h-[30px] items-center justify-between gap-[8px] border-b border-[#e4eaf2] bg-white px-[10px]">
+            <h4 className="min-w-0 truncate text-[7.6px] font-bold text-[#172033]">
+              Tableau de bord administrateur
+            </h4>
+            <div className="flex shrink-0 items-center gap-[4px]">
+              <span className="h-[10px] w-[30px] rounded-full bg-[#f1f5fb]" />
+              <span className="h-[13px] w-[13px] rounded-full bg-[#e8f1ff]" />
+            </div>
+          </header>
+
+          <div className="space-y-[6px] p-[8px]">
+            <section className="rounded-[12px] border border-[#e2e8f0] bg-white p-[8px] shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+              <h5 className="mb-[3px] truncate text-[7.8px] font-bold leading-tight text-[#172033]">
+                Bienvenue, Admin
+              </h5>
+              <p className="max-w-[260px] text-[5.7px] font-medium leading-[1.35] text-[#667085]">
+                Gerez l'etablissement, les classes, les presences et les
+                paiements depuis un tableau de bord centralise.
+              </p>
+            </section>
+
+            <section className="grid grid-cols-4 gap-[5px]">
+              {stats.map(([label, value]) => (
+                <article
+                  key={label}
+                  className="min-w-0 rounded-[10px] border border-[#e2e8f0] bg-white p-[6px] shadow-[0_7px_16px_rgba(15,23,42,0.05)]"
+                >
+                  <p className="mb-[4px] truncate text-[5px] font-semibold text-[#667085]">
+                    {label}
+                  </p>
+                  <strong className="block truncate text-[9px] font-bold leading-none text-[#172033]">
+                    {value}
+                  </strong>
+                </article>
+              ))}
+            </section>
+
+            <section className="grid grid-cols-2 gap-[6px]">
+              <article className="min-w-0 rounded-[12px] border border-[#e2e8f0] bg-white p-[7px] shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+                <h5 className="mb-[6px] truncate text-[7px] font-bold text-[#172033]">
+                  Actions rapides
+                </h5>
+                <div className="space-y-[5px]">
+                  <button className="flex h-[17px] w-full items-center justify-between gap-[4px] rounded-[8px] bg-[#2f6dfc] px-[7px] text-left text-[5.7px] font-semibold text-white">
+                    <span className="min-w-0 truncate">Gerer les eleves</span>
+                    <span aria-hidden="true">+</span>
+                  </button>
+                  <button className="h-[17px] w-full truncate rounded-[8px] border border-[#dbe4f0] bg-[#f7f9fc] px-[7px] text-left text-[5.7px] font-semibold text-[#344054]">
+                    Gerer les emplois du temps
+                  </button>
+                </div>
+              </article>
+
+              <article className="min-w-0 rounded-[12px] border border-[#e2e8f0] bg-white p-[7px] shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+                <h5 className="mb-[6px] truncate text-[7px] font-bold text-[#172033]">
+                  Suivi du jour
+                </h5>
+                <div className="space-y-[5px]">
+                  <div className="flex items-center justify-between gap-[4px] rounded-[8px] bg-[#f7f9fc] px-[7px] py-[5px]">
+                    <span className="min-w-0 truncate text-[5.7px] font-medium text-[#667085]">
+                      0 eleves inscrits
+                    </span>
+                    <span className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#2f6dfc]" />
+                  </div>
+                  <div className="flex items-center justify-between gap-[4px] rounded-[8px] bg-[#f7f9fc] px-[7px] py-[5px]">
+                    <span className="min-w-0 truncate text-[5.7px] font-medium text-[#667085]">
+                      0 enseignants affectes
+                    </span>
+                    <span className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#2f6dfc]" />
+                  </div>
+                </div>
+              </article>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectsSection() {
   const projects = [
     {
@@ -67,10 +200,10 @@ export function ProjectsSection() {
     {
       title: 'Student Management Dashboard',
       description: 'A reusable admin dashboard with data tables and authentication built using modern frontend tools.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhZG1pbiUyMGRhc2hib2FyZCUyMGludGVyZmFjZXxlbnwxfHx8fDE3NzkwMzYxMjd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      preview: 'gsd-dashboard',
       links: [
         { label: 'Live Demo', href: '#', icon: ExternalLink },
-        { label: 'GitHub', href: 'https://github.com/NABILBENHARIBOU', icon: Github }
+        { label: 'GitHub', href: 'https://github.com/NABILBENHARIBOU/gestions_ecole', icon: Github }
       ],
       tags: ['React', 'UI', 'Dashboard'],
       gradient: 'from-[#00D1FF] to-[#6C63FF]'
@@ -130,6 +263,8 @@ export function ProjectsSection() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`} />
                 {project.preview === 'appointments' ? (
                   <AppointmentPreview />
+                ) : project.preview === 'gsd-dashboard' ? (
+                  <GsdDashboardPreview />
                 ) : (
                   <img
                     src={project.image}
