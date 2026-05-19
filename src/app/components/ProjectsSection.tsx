@@ -189,6 +189,7 @@ export function ProjectsSection() {
     {
       title: 'Local Web Penetration Testing Lab',
       description: 'A personal lab environment to practice web application pentesting using Kali Linux, Metasploit, and Burp Suite.',
+      status: 'En cours',
       image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5JTIwcGVuZXRyYXRpb24lMjB0ZXN0aW5nJTIwbGFifGVufDF8fHx8MTc3OTAzNjEyNnww&ixlib=rb-4.1.0&q=80&w=1080',
       links: [
         { label: 'Live Demo', href: '#', icon: ExternalLink },
@@ -211,6 +212,7 @@ export function ProjectsSection() {
     {
       title: 'E-Commerce Web Application',
       description: 'A full-stack e-commerce platform with product catalog, shopping cart, and API integration built with Spring Boot and React.',
+      status: 'En cours',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
       links: [
         { label: 'Live Demo', href: '#', icon: ExternalLink },
@@ -289,6 +291,20 @@ export function ProjectsSection() {
                 >
                   {project.title}
                 </h3>
+                {project.status && (
+                  <div className="mb-3">
+                    <Badge
+                      className="px-3 py-1 text-xs"
+                      style={{
+                        background: 'rgba(255,193,7,0.12)',
+                        color: '#FFC107',
+                        border: '1px solid rgba(255,193,7,0.25)'
+                      }}
+                    >
+                      {project.status}
+                    </Badge>
+                  </div>
+                )}
                 <p className="mb-4 text-sm leading-relaxed" style={{ color: '#B0B0B0' }}>
                   {project.description}
                 </p>
