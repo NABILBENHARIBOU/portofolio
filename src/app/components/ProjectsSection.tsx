@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import OptimizedImage from './ui/image-utils';
 
 function AppointmentPreview() {
   return (
@@ -221,6 +222,18 @@ export function ProjectsSection() {
       tags: ['Spring Boot', 'React', 'Vite', 'TypeScript'],
       gradient: 'from-[#6C63FF] to-[#00D1FF]'
     }
+    ,{
+      title: 'SecureChat',
+      description: 'End-to-end encrypted messaging platform built with Spring Boot and React, featuring 2FA, steganography, and blockchain-backed message integrity.',
+      image: 'https://images.unsplash.com/photo-1525182008055-f88b95ff7980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.0.3&q=80&w=1080',
+      status: 'En cours',
+      links: [
+        { label: 'Live Demo', href: '#', icon: ExternalLink },
+        { label: 'GitHub', href: '#', icon: Github }
+      ],
+      tags: ['Spring Boot', 'React', 'E2E Encryption', '2FA', 'Blockchain', 'Steganography'],
+      gradient: 'from-[#00B894] to-[#6C5CE7]'
+    }
   ];
 
   return (
@@ -268,13 +281,10 @@ export function ProjectsSection() {
                 ) : project.preview === 'gsd-dashboard' ? (
                   <GsdDashboardPreview />
                 ) : (
-                  <img
+                  <OptimizedImage
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
                   />
                 )}
               </div>
